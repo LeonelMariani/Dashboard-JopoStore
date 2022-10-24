@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function Search(){
@@ -9,7 +9,7 @@ function Search(){
 	const [movies, setMovies]= useState([]);
 	const [keyword, setKeyword]= useState([]);
 
-	const searchTitle= e=>{
+	const searchTitle= e =>{
 		e.preventDefault();
 		let title= e.target.title.value
 		setKeyword(title)
@@ -23,12 +23,6 @@ function Search(){
 		}
 	},[keyword])
 
-	/*
-	useEffect(()=>{
-		fetch(`https://www.omdbapi.com/?s=action&apikey=75d543`)
-		.then(response=> response.json())
-		.then(data=>setMovies(data.Search))
-	},[])*/
 
 	return(
 		<div className="container-fluid">
