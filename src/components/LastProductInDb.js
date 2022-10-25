@@ -27,21 +27,23 @@ function LastProductInDb () {
    console.log (lastProduct) 
 
         return(
-            <div className="col-lg-6 mb-4">
-                <div className="card shadow mb-4">
-                    <div className="card-header py-3">
-                        <h5 className="m-0 font-weight-bold text-gray-800">Último producto</h5>
-                    </div>
-                    <div className="card-body">
-                        <div className="text-center">
-                            <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={lastProduct.img} alt=" último producto "/>
+            <React.Fragment>
+                <div className="col-lg-6 mb-4">
+                    <div className="card shadow mb-4">
+                        <div className="card-header py-3">
+                            <h5 className="m-0 font-weight-bold text-gray-800">Último producto</h5>
                         </div>
-                        <p>{lastProduct.description}</p>
-                        <Link  to="/detalleDeProducto" className="btn btn-danger" rel="nofollow">Detalle de producto</Link>
+                        <div className="card-body">
+                            <div className="text-center">
+                                <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={lastProduct.img} alt=" último producto "/>
+                            </div>
+                            <p>{lastProduct.description}</p>
+                            <Link  to="/detalleDeProducto" className="btn btn-danger" rel="nofollow">Detalle de producto</Link>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            </React.Fragment> 
+       )
 
     }
 
