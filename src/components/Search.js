@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 
-function Search(){
+function Search() {
 
-	let productImage;
+	let products = [];
 
-	const [products, setProducts] = useState([]);
 	const [keyword, setKeyword] = useState([]);
 
 	const searchProduct = e => {
@@ -14,30 +13,27 @@ function Search(){
 		setKeyword (product);
 	}
 
+	// Inicialmente se listan todos los productos
 	useEffect( () => {
+		fetch('http://localhost:3040/api/products/')
+		.then(response => response.json())
+		.then(data => {
+			products = data.data.products;
+			})
+		}, [] )
 
+	// Al ingresar un argumento de búsqueda y cambiar el estado de keyword se dispara este fetch
+	useEffect( () => {
 		if(keyword.length > 0) {
 			fetch('http://localhost:3040/api/products/?search=' + keyword)
 			.then(response => response.json())
 			.then(data => {
-				setProducts (data.data.products);
-
+				products = data.data.products;
 			})
 		}
-	}, [keyword])
+	}, [keyword] )
 
 	
-	useEffect( () => {
-
-		fetch('http://localhost:3040/api/products/')
-		.then(response => response.json())
-		.then(data => {
-
-			setProducts (data.data.products);
-
-			})
-		}, [] )
-
 	return(
 		<div className="container-fluid">
 			{/* {
