@@ -3,6 +3,7 @@ import SmallCard from './SmallCard';
 import { useEffect, useState } from 'react';
 
 
+
 function ContentRowMovies(){
 
 	const [products, setProducts]= useState({data:{count:0}});

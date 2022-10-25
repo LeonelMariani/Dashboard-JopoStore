@@ -3,39 +3,53 @@ import { useEffect, useState } from 'react';
 
 function Search(){
 
-	// Credenciales de API
-	const apiKey = 'X'; // Intenta poner cualquier cosa antes para probar
+	let productImage;
 
-	const [movies, setMovies]= useState([]);
-	const [keyword, setKeyword]= useState([]);
+	const [products, setProducts] = useState([]);
+	const [keyword, setKeyword] = useState([]);
 
-	const searchTitle= e =>{
+	const searchProduct = e => {
 		e.preventDefault();
-		let title= e.target.title.value
-		setKeyword(title)
+		let product = e.target.product.value;
+		setKeyword (product);
 	}
 
-	useEffect(()=>{
-		if(keyword.length>0){
-			fetch(`https://www.omdbapi.com/?s=${keyword}&apikey=75d543`)
-		.then(response=> response.json())
-		.then(data=>setMovies(data.Search))
-		}
-	},[keyword])
+	useEffect( () => {
 
+		if(keyword.length > 0) {
+			fetch('http://localhost:3040/api/products/?search=' + keyword)
+			.then(response => response.json())
+			.then(data => {
+				setProducts (data.data.products);
+
+			})
+		}
+	}, [keyword])
+
+	
+	useEffect( () => {
+
+		fetch('http://localhost:3040/api/products/')
+		.then(response => response.json())
+		.then(data => {
+
+			setProducts (data.data.products);
+
+			})
+		}, [] )
 
 	return(
 		<div className="container-fluid">
-			{
-				apiKey !== '' ?
+			{/* {
+				apiKey !== '' ? */}
 				<>
 					<div className="row my-4">
 						<div className="col-12 col-md-6">
 							{/* Buscador */}
-							<form onSubmit={searchTitle} method="GET">
+							<form onSubmit={searchProduct} method="GET">
 								<div className="form-group">
 									<label htmlFor="">Buscar producto:</label>
-									<input type="text" name='title' className="form-control" />
+									<input type="text" name='product' className="form-control" />
 								</div>
 								<button className="btn btn-info">Buscador</button>
 							</form>
@@ -47,24 +61,28 @@ function Search(){
 						</div>
 						{/* Listado de películas */}
 						{
-							movies.length >= 0 && movies.map((movie, i) => {
-								console.log(movies)
+							products.length >= 0 && products.map((product, i) => {
+
+								// productImage = 'C:/Users/Guido/Desktop/ProyectoIntegrador/public' + product.img;
+
+								
 								return (
 									<div className="col-sm-6 col-md-3 my-4" key={i}>
 										<div className="card shadow mb-4">
 											<div className="card-header py-3">
-												<h5 className="m-0 font-weight-bold text-gray-800">{movie.Title}</h5>
+												<h5 className="m-0 font-weight-bold text-gray-800">{product.name}</h5>
 											</div>
 											<div className="card-body">
 												<div className="text-center">
 													<img 
 														className="img-fluid px-3 px-sm-4 mt-3 mb-4" 
-														src={movie.Poster}
-														alt={movie.Title} 
+								
+														src={product.img}
+														alt={product.name} 
 														style={{ width: '90%', height: '400px', objectFit: 'cover' }} 
 													/>
 												</div>
-												<p>{movie.Year}</p>
+												<p>{product.categoryName}</p>
 											</div>
 										</div>
 									</div>
@@ -72,11 +90,11 @@ function Search(){
 							})
 						}
 					</div>
-					{ movies.length === 0 && <div className="alert alert-warning text-center">No se encontraron productos</div>}
+					{ products.length === 0 && <div className="alert alert-warning text-center">No se encontraron productos</div>}
 				</>
-				:
-				<div className="alert alert-danger text-center my-4 fs-2">Eyyyy... ¿PUSISTE TU APIKEY?</div>
-			}
+			{/* 	:
+			 	<div className="alert alert-danger text-center my-4 fs-2">Eyyyy... ¿PUSISTE TU APIKEY?</div>
+			 } */}
 		</div>
 	)
 }

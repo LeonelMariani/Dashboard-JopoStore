@@ -3,6 +3,8 @@ import imagenFondo from '../assets/images/tocadiscos-4.jpg';
 import {Link} from 'react-router-dom';
 
 function LastProductInDb(){
+
+    
     return(
         <div className="col-lg-6 mb-4">
             <div className="card shadow mb-4">
