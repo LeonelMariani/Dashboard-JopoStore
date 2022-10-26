@@ -30,7 +30,7 @@ console.log (props.nombre);
 						<Route path="/categorias" component={CategoriesInDb} />
 						<Route path="/listaDeproductos" component={Chart} />
 						{/* <Route path="/buscador" component={Search} /> */}
-						<Route path="/detalleDeProducto" component={ProductDetail} />
+						<Route path="/detalleDeProducto/:id" component={ProductDetail} />
 						{/* <Route exact path="/" component={ContentRowCenter} /> */}
 						<Route exact path="/">
 							<ContentRowCenter />

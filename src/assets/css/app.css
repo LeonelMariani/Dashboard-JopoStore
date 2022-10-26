@@ -589,6 +589,20 @@ pre code {
     margin-left: auto
 }
 
+.last-prod-in-db-name {
+    font-weight: bold;
+    color: #5a5c69;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.last-prod-in-db-description {
+    color: #5a5c69;
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
+}
+
 @media (min-width:576px) {
     .container {
         max-width: 540px
