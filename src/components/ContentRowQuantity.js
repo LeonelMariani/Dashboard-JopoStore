@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 function ContentRowMovies(){
 
 	const [products, setProducts]= useState({data:{count:0}});
-    const [categories, setCategories]= useState({meta:{count:0}});
+    const [categories, setCategories]= useState({data:{count:0}});
     const [clients, setClients]= useState({data:{count:0}});
 
     useEffect(()=>{
@@ -19,7 +19,7 @@ function ContentRowMovies(){
         })
         .catch ( e => console.log (e))
 
-        fetch("http://localhost:3040/api/products/categories/")
+        fetch("http://localhost:3040/api/categories/")
         .then(response=> response.json())
         .then(data=>{
             setCategories(data)	
@@ -60,7 +60,7 @@ function ContentRowMovies(){
     let categoriesCount = {
         title:'Categorias en base de datos' ,
         color:'warning',
-        cuantity: categories.meta.count,
+        cuantity: categories.data.count,
         icon:'fa-fw fa-folder'
     }
     
