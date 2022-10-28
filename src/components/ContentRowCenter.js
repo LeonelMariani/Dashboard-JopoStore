@@ -4,14 +4,18 @@ import CategoriesInDb from './CategoriesInDb';
 import ContentRowQuantity from './ContentRowQuantity';
 import Chart from './Chart';
 
-function ContentRowCenter(){
+function ContentRowCenter() {
+
     return (
-        <div className="row">
-        <ContentRowQuantity />
-        <LastProductInDb />
-        <CategoriesInDb />
-        <Chart />
+        <React.Fragment>   
+            <div className="row">
+                <ContentRowQuantity />
+                {/* <LastProductInDb /> */}
+                <LastProductInDb />
+                <CategoriesInDb />
+                <Chart />
             </div>
+        </React.Fragment>
     )
 }
 
