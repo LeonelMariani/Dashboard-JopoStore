@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import imagenFondo from '../assets/images/tocadiscos-4.jpg';
 import { Link } from 'react-router-dom';
 
-function ProductDetail() {
+function ProductDetail(props) {
+    const id=Number(props.match.params.id)
+
+    const [products, setProducts]=useState([])
+
+    useEffect(()=>{
+        fetch('http://localhost:3040/api/products')
+        .then(response=>response.json())
+        .then(products=>setProducts(products.data.products))
+    },[])
+
+    const product= products.find(oneProduct=> oneProduct.id===id)
+    console.log(product)
     return (
+       
         <div className="col-lg-6 mb-4">
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
@@ -13,12 +26,30 @@ function ProductDetail() {
                     <div className="text-center">
                         <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 40 + 'rem' }} src={imagenFondo} alt=" tocadiscos-4 " />
                     </div>
-                    <ul>
-                        <li>Precio:</li>
-                        <li>Descuento:</li>
-                        <li>Color:</li>
-                        <li>Categoría:</li>
-                    </ul>
+
+                    {
+                        product &&
+                         <ul>
+                         <li>Nombre:{product.name}</li>
+                         <li>Precio:{product.price}</li>
+                         <li>Descuento:{product.discount}</li>
+                         <li>URL:{product.url}</li>
+
+                         
+                        {
+                            product.colors.length >1 && product.colors.map((color,index)=>{  
+                                 
+                                        return <li key={color + index}>Color:{color.name} </li>
+                                    })
+                        }     
+
+                        <li>Categoría: {product.categoryName}</li>
+                        </ul>
+
+
+
+                    }
+                   
 
                     <Link to="/listaDeProductos" className="btn btn-danger" rel="nofollow">Lista completa</Link>
 

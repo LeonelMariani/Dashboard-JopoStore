@@ -1,6 +1,7 @@
 import React from 'react';
 import image from '../assets/images/logo-JopoStore.png';
-import {Link} from 'react-router-dom';
+import CategoriesInDb from './CategoriesInDb';
+import {Link, Route} from 'react-router-dom';
 
 function SideBar(){
     return(
@@ -36,7 +37,7 @@ function SideBar(){
                 <Link className="nav-link" to="/categorias">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Categorias</span>
-                    </Link>
+                </Link>
                 </li>
 
                 {/*<!-- Nav Item - Charts -->*/}
@@ -70,6 +71,10 @@ function SideBar(){
                 <hr className="sidebar-divider d-none d-md-block"/>
             </ul>
             {/*<!-- End of Sidebar -->*/}
+
+            <Route path='/categorias'>
+                <CategoriesInDb/>
+            </Route>
 
    
         </React.Fragment>

@@ -6,20 +6,14 @@ function ChartRow(props){
     return (
                 <tr>
                     <td> 
-                    <Link to="/detalleDeProducto">
-                    {props.Title}
+                    <Link to={`detalleDeProducto/${props.id}`}>
+                    {props.name}
                     </Link>
                     </td>
-                    <td>{props.Length}</td>
-                    <td>{props.Rating}</td>
-                    <td>
-                        <ul>
-                            {props.Categories.map( (category,i) => 
-                                <li key={`category ${i}`}>{category}</li>
-                            )}
-                        </ul>
-                    </td>
-                    <td>{props.Awards}</td>
+                    <td>{props.description}</td>
+                    <td>{props.categoryName}</td>
+                   
+                    <td>{props.url}</td>
                 </tr>
             )
     }

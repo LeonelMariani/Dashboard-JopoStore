@@ -1296,7 +1296,7 @@ pre code {
 
     .col-lg-6 {
         flex: 0 0 50%;
-        max-width: 50%
+        max-width: 100%
     }
 
     .col-lg-7 {
@@ -6993,6 +6993,11 @@ button.bg-dark:hover {
 
 .d-inline-flex {
     display: inline-flex !important
+}
+
+.row2{
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 @media (min-width:576px) {
