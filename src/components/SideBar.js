@@ -1,7 +1,6 @@
 import React from 'react';
 import image from '../assets/images/logo-JopoStore.png';
-import CategoriesInDb from './CategoriesInDb';
-import {Link, Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function SideBar(){
     return(
@@ -72,9 +71,6 @@ function SideBar(){
             </ul>
             {/*<!-- End of Sidebar -->*/}
 
-            <Route path='/categorias'>
-                <CategoriesInDb/>
-            </Route>
 
    
         </React.Fragment>

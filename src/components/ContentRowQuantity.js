@@ -19,7 +19,7 @@ function ContentRowMovies(){
         })
         .catch ( e => console.log (e))
 
-        fetch("http://localhost:3040/api/categories/")
+        fetch("http://localhost:3040/api/products/categories/")
         .then(response=> response.json())
         .then(data=>{
             setCategories(data)	

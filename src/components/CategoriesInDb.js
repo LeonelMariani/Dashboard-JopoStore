@@ -7,7 +7,7 @@ function CategoriesInDb() {
   useEffect(()=>{
     fetch('http://localhost:3040/api/products/categories')
     .then(response=>response.json())
-    .then(category=>setCategories(category.data))
+    .then(category=>setCategories(category.data.categories))
   },[])
 
   return (
@@ -27,14 +27,13 @@ function CategoriesInDb() {
                 
                categories.length >0 && categories.map((category,index)=>{
                  return(
-                  <div className="col-lg-6 mb-4">
+                   <div className="col-lg-6 mb-4">
                     <div className="card bg-dark text-white shadow">
                       <div className="card-body" key={category + index}>{category.name}</div>
                     </div>
                   </div>
-                 ) 
+                      )
                 })
-                
               }
               
           </div>

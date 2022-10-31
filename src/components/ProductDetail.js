@@ -1,5 +1,4 @@
 import React, {useEffect,useState} from 'react';
-import imagenFondo from '../assets/images/tocadiscos-4.jpg';
 import { Link } from 'react-router-dom';
 
 function ProductDetail(props) {
@@ -14,7 +13,9 @@ function ProductDetail(props) {
     },[])
 
     const product= products.find(oneProduct=> oneProduct.id===id)
-    console.log(product)
+    
+    
+
     return (
        
         <div className="col-lg-6 mb-4">
@@ -24,7 +25,7 @@ function ProductDetail(props) {
                 </div>
                 <div className="card-body">
                     <div className="text-center">
-                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 40 + 'rem' }} src={imagenFondo} alt=" tocadiscos-4 " />
+                        <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 40 + 'rem' }}  alt=" tocadiscos-4 " />
                     </div>
 
                     {
@@ -32,21 +33,24 @@ function ProductDetail(props) {
                          <ul>
                          <li>Nombre:{product.name}</li>
                          <li>Precio:{product.price}</li>
-                         <li>Descuento:{product.discount}</li>
+
+                        {
+                            product.discount &&
+                            <li>Descuento:{product.discount}</li>
+                        }
+
+                         <li>Descripción:{product.description}</li>
                          <li>URL:{product.url}</li>
 
                          
                         {
-                            product.colors.length >1 && product.colors.map((color,index)=>{  
-                                 
-                                        return <li key={color + index}>Color:{color.name} </li>
-                                    })
+                            product.colors.map((color,index)=>{
+                                 return <li key={color + index}> Color: {color.name} </li>
+                                    })        
                         }     
-
+                       
                         <li>Categoría: {product.categoryName}</li>
                         </ul>
-
-
 
                     }
                    
