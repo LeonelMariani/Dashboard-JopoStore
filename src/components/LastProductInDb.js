@@ -35,7 +35,7 @@ function LastProductInDb () {
                                 <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{width: 40 +'rem'}} src={lastProduct.img} alt=" último producto "/>
                             </div>
                             <p className="last-prod-in-db-description">{lastProduct.description}</p>
-                            <Link  to={`/detalleDeProducto/${lastProduct.id}`} className="btn btn-danger" rel="nofollow">Detalle de producto</Link>
+                            <Link  to={`detalleDeProducto/${lastProduct.id}`} className="btn btn-danger" rel="nofollow">Detalle de producto</Link>
                         </div>
                     </div>
                 </div>
