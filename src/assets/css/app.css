@@ -418,7 +418,7 @@ h4 {
 
 .h5,
 h5 {
-    font-size: 1.25rem
+    font-size: 1rem
 }
 
 .h6,
@@ -601,6 +601,15 @@ pre code {
     margin-top: 0;
     margin-bottom: 1.2rem;
     font-size: 1.2rem;
+}
+
+.botones {
+    display: flex;
+    justify-content: center
+}
+
+.botones form {
+    margin: 20px;
 }
 
 @media (min-width:576px) {
@@ -8422,7 +8431,8 @@ button.bg-dark:hover {
 
 .pb-3,
 .py-3 {
-    padding-bottom: 1rem !important
+    padding-bottom: 1rem !important;
+    height: 50px;
 }
 
 .pl-3,

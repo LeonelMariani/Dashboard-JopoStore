@@ -3,40 +3,54 @@ import { useEffect, useState } from 'react';
 
 function Search(){
 
-	
 
 	const [products, setProducts] = useState([]);
-	const [keyword, setKeyword] = useState([]);
+	const [keyword, setKeyword] = useState('');
+	const [page, setPage] = useState(1);
+	const [productCount, setProductCount] = useState(0);
+
+	const url = 'http://localhost:3040/api/products/?page=';
 
 	const searchProduct = e => {
+		setPage (1);
 		e.preventDefault();
 		let product = e.target.product.value;
 		setKeyword (product);
 	}
 
+	const moreProducts = e => {
+		e.preventDefault();
+		setPage (page + 1);
+	}
+
+	const fewerProducts = e => {
+		e.preventDefault();
+		setPage (page - 1);
+	}
+
+	const fetchProducts = ( url => {
+		fetch('http://localhost:3040/api/products/?search=' + keyword + '&page=' + page)
+		.then(response => response.json())
+		.then(data => {
+			setProducts (data.data.products);
+			setProductCount (data.data.products.length);
+			})
+	})
+
 	useEffect( () => {
 
-		if(keyword.length > 0) {
-			fetch('http://localhost:3040/api/products/?search=' + keyword)
-			.then(response => response.json())
-			.then(data => {
-				setProducts (data.data.products);
-
-			})
+		if ( keyword.length > 0 && keyword.toLowerCase() !== 'todo' ) {
+			fetchProducts (`${url}${page}&search=${keyword}`)
+		} else {
+			fetchProducts (`${url}${page}`)
 		}
-	}, [keyword])
+	}, [keyword, page])
 
 	
 	useEffect( () => {
+		fetchProducts (`${url}${page}`)
+	}, [] )
 
-		fetch('http://localhost:3040/api/products/')
-		.then(response => response.json())
-		.then(data => {
-
-			setProducts (data.data.products);
-
-			})
-		}, [] )
 
 	return(
 		<div className="container-fluid">
@@ -48,10 +62,10 @@ function Search(){
 							{/* Buscador */}
 							<form onSubmit={searchProduct} method="GET">
 								<div className="form-group">
-									<label htmlFor="">Buscar producto:</label>
+									<label htmlFor="">Buscar producto (escriba "todo" para ver todos los productos):</label>
 									<input type="text" name='product' className="form-control" />
 								</div>
-								<button className="btn btn-info">Buscador</button>
+								<button className="btn btn-info">Buscar</button>
 							</form>
 						</div>
 					</div>
@@ -59,7 +73,6 @@ function Search(){
 						<div className="col-12">
 							<h2>Productos para la palabra: {keyword}</h2>
 						</div>
-						{/* Listado de películas */}
 						{
 							products.length >= 0 && products.map((product, i) => {
 
@@ -79,10 +92,12 @@ function Search(){
 								
 														src={product.img}
 														alt={product.name} 
-														style={{ width: '90%', height: '400px', objectFit: 'cover' }} 
+														style={{ width: '90%', 
+														height: '30%', 
+														objectFit: 'cover' }} 
 													/>
 												</div>
-												<p>{product.categoryName}</p>
+												<p>Categoría: {product.categoryName}</p>
 											</div>
 										</div>
 									</div>
@@ -90,11 +105,24 @@ function Search(){
 							})
 						}
 					</div>
-					{ products.length === 0 && <div className="alert alert-warning text-center">No se encontraron productos</div>}
+
+	 {/* agregado botón */}
+					<div className="botones">
+					{ page > 1 &&
+						<form onSubmit={fewerProducts} method="GET">
+							<button className="btn btn-info" type="submit">Anterior</button>
+						</form> }
+					
+					{ productCount === 10 &&
+						<form onSubmit={moreProducts} method="GET">
+							<button className="btn btn-info" type="submit">Siguiente</button>
+						</form>}
+					</div>
+	 {/* fin agregado botón */}
+					
+					{ productCount === 0 && <div className="alert alert-warning text-center">No se encontraron productos</div>}
+
 				</>
-			{/* 	:
-			 	<div className="alert alert-danger text-center my-4 fs-2">Eyyyy... ¿PUSISTE TU APIKEY?</div>
-			 } */}
 		</div>
 	)
 }
