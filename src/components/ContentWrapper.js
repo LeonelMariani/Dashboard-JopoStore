@@ -11,8 +11,7 @@ function ContentWrapper () {
                 {/*<!-- Main Content -->*/}
                 <div id="content">
                     <TopBar />
-                    <ContentRowTop nombre='Marcela' />
-                  
+                    <ContentRowTop />
                     <Footer />
                 </div>
             </div>    

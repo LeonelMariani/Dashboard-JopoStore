@@ -4,11 +4,14 @@ import ContentWrapper from './ContentWrapper';
 
 
 function App() {
-
+  
   return (
+    
     <React.Fragment>
-      	<div id="wrapper">
 
+      
+      	<div id="wrapper">
+       
           <SideBar />
           <ContentWrapper /> 
           

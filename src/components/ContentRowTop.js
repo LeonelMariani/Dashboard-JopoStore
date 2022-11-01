@@ -29,10 +29,19 @@ console.log (props.nombre);
 					<Route exact path="/" component={ContentRowCenter} />
 					<Route component={NotFound} />
 				</Switch>
+<<<<<<< HEAD
+
+			</div>
+			{/*<!--End Content Row Top-->*/}
+
+		</React.Fragment>
+	)
+=======
 	
 				</div>
 		</React.Fragment>	 
     )
+>>>>>>> ea9ca3b71ff620cbd70977a7530342e0228029ec
 
 }
 export default ContentRowTop;
