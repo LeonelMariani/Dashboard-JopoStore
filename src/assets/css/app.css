@@ -742,6 +742,25 @@ pre code {
     max-width: 100%
 }
 
+.col-lg-6-1{
+    flex: 0 0 50%;
+    max-width: 100%;
+    position: relative;
+    color: white;
+    right: -90px;
+    top:7px;
+    z-index: 1;
+    width: 100%;
+    padding-right: .75rem;
+    padding-left: .75rem
+}
+
+.mb-4-1{
+    margin-bottom: 1.5rem !important;
+    width: 100%;
+    top:-260px;
+}
+
 .col-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%
