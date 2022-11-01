@@ -4,22 +4,6 @@ import {Link} from 'react-router-dom';
 
 function LastProductInDb () {
 
-// const [products, setProducts]= useState([]);   
-//
-//     useEffect(()=>{
-// console.log ('cargó');	
-// 		fetch("http://localhost:3040/api/products/")
-// 		.then(response=> response.json())
-// 		.then(data=>{
-//             setProducts(data);
-//             console.log ('products', products);	
-//         })
-//         .catch ( e => console.log (e))
-//     },[])
-
-    // let products = [];
-    // let lastProduct = {};
-
     const [products, setProducts] = useState([]);
     const [lastProduct, setLastProduct] = useState ('');
 
@@ -27,16 +11,13 @@ function LastProductInDb () {
         fetch("http://localhost:3040/api/products/")
             .then ( response => response.json() )
             .then ( data => {
-                // products = data.data.products;
-                setProducts (data.data.products);
-                console.log (products);
+                // setProducts (data.data.products);
                 return data.data.products;
             })
-            .then ( ( products ) => {
+            .then ( products => {
                 let maxId = Math.max.apply ( Math, products.map ( product => {return product.id} ));
                 let last = products.find ( product => product.id === maxId );
                 setLastProduct (last);
-                console.log (lastProduct);
             })
             .catch ( e => console.log (e) )
     }, [] )
