@@ -36,7 +36,7 @@ function SideBar(){
                 <Link className="nav-link" to="/categorias">
                         <i className="fas fa-fw fa-folder"></i>
                         <span>Categorias</span>
-                    </Link>
+                </Link>
                 </li>
 
                 {/*<!-- Nav Item - Charts -->*/}
@@ -70,6 +70,7 @@ function SideBar(){
                 <hr className="sidebar-divider d-none d-md-block"/>
             </ul>
             {/*<!-- End of Sidebar -->*/}
+
 
    
         </React.Fragment>
