@@ -10,16 +10,16 @@ import NotFound from './NotFound'
 import { Route, Switch } from "react-router-dom";
 
 
-function ContentRowTop(){
-    return(
-        <React.Fragment>
-				{/*<!-- Content Row Top -->*/}
-				<div className="container-fluid">
-					<div className="d-sm-flex aligns-items-center justify-content-between mb-4">
-						<h1 className="h3 mb-0 text-gray-800">Panel App</h1>
-					</div>
-				
-					<Switch>
+function ContentRowTop() {
+	return (
+		<React.Fragment>
+			{/*<!-- Content Row Top -->*/}
+			<div className="container-fluid">
+				<div className="d-sm-flex aligns-items-center justify-content-between mb-4">
+					<h1 className="h3 mb-0 text-gray-800">Panel App</h1>
+				</div>
+
+				<Switch>
 					<Route path="/totales" component={ContentRowQuantity} />
 					<Route path="/ultimoProducto" component={LastProductInDb} />
 					<Route path="/categorias" component={CategoriesInDb} />
@@ -29,12 +29,12 @@ function ContentRowTop(){
 					<Route exact path="/" component={ContentRowCenter} />
 					<Route component={NotFound} />
 				</Switch>
-	
-				</div>
-				{/*<!--End Content Row Top-->*/}
 
-        </React.Fragment>
-    )
+			</div>
+			{/*<!--End Content Row Top-->*/}
+
+		</React.Fragment>
+	)
 
 }
 export default ContentRowTop;

@@ -12,7 +12,6 @@ function ContentWrapper(){
                 <div id="content">
                     <TopBar />
                     <ContentRowTop />
-                  
                     <Footer />
                 </div>
             </div>    
