@@ -38,16 +38,16 @@ function Search(){
 
 	useEffect( () => {
 
-		if ( keyword.length > 0 && keyword.toLowerCase() != 'todo' ) {
-			fetchProducts (`url${page}&search=${keyword}`)
+		if ( keyword.length > 0 && keyword.toLowerCase() !== 'todo' ) {
+			fetchProducts (`${url}${page}&search=${keyword}`)
 		} else {
-			fetchProducts (`url${page}`)
+			fetchProducts (`${url}${page}`)
 		}
 	}, [keyword, page])
 
 	
 	useEffect( () => {
-		fetchProducts (`url${page}`)
+		fetchProducts (`${url}${page}`)
 	}, [] )
 
 

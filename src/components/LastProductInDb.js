@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 function LastProductInDb () {
 
-    const [products, setProducts] = useState([]);
     const [lastProduct, setLastProduct] = useState ('');
 
     useEffect ( () => {
