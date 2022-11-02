@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 function Search(){
 
+
 	const [products, setProducts] = useState([]);
 	const [keyword, setKeyword] = useState('');
 	const [page, setPage] = useState(1);
