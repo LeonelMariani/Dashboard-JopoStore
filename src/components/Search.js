@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-function Search(props) {
+function Search() {
 
 
 	const [products, setProducts] = useState([]);
@@ -108,8 +108,10 @@ function Search(props) {
 								</div>
 							)
 						})
-					}
-				</div>
+						}
+					</div>
+				
+				
 
 				{/* agregado botón */}
 				<div className="botones">
