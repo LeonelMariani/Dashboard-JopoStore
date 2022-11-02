@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-function Search(){
+function Search() {
 
 
 	const [products, setProducts] = useState([]);
@@ -13,71 +13,71 @@ function Search(){
 	const url = 'http://localhost:3040/api/products/?page=';
 
 	const searchProduct = e => {
-		setPage (1);
+		setPage(1);
 		e.preventDefault();
 		let product = e.target.product.value;
-		setKeyword (product);
+		setKeyword(product);
 	}
 
 	const moreProducts = e => {
 		e.preventDefault();
-		setPage (page + 1);
+		setPage(page + 1);
 	}
 
 	const fewerProducts = e => {
 		e.preventDefault();
-		setPage (page - 1);
+		setPage(page - 1);
 	}
 
-	const fetchProducts = ( url => {
+	const fetchProducts = (url => {
 		fetch('http://localhost:3040/api/products/?search=' + keyword + '&page=' + page)
-		.then(response => response.json())
-		.then(data => {
-			setProducts (data.data.products);
-			setProductCount (data.data.products.length);
+			.then(response => response.json())
+			.then(data => {
+				setProducts(data.data.products);
+				setProductCount(data.data.products.length);
 			})
 	})
 
-	useEffect( () => {
+	useEffect(() => {
 
-		if ( keyword.length > 0 && keyword.toLowerCase() !== 'todo' ) {
-			fetchProducts (`${url}${page}&search=${keyword}`)
+		if (keyword.length > 0 && keyword.toLowerCase() !== 'todo') {
+			fetchProducts(`${url}${page}&search=${keyword}`)
 		} else {
-			fetchProducts (`${url}${page}`)
+			fetchProducts(`${url}${page}`)
 		}
 	}, [keyword, page])
 
-	
-	useEffect( () => {
-		fetchProducts (`${url}${page}`)
-	}, [] )
+
+	useEffect(() => {
+		fetchProducts(`${url}${page}`)
+	}, [])
 
 
-	return(
+	return (
 		<div className="container-fluid">
 			{/* {
 				apiKey !== '' ? */}
-				<>
-					<div className="row my-4">
-						<div className="col-12 col-md-6">
-							{/* Buscador */}
-							<form onSubmit={searchProduct} method="GET">
-								<div className="form-group">
-									<label htmlFor="">Buscar producto (escriba "todo" para ver todos los productos):</label>
-									<input type="text" name='product' className="form-control" />
-								</div>
-								<button className="btn btn-info">Buscar</button>
-							</form>
-						</div>
+			<>
+				<div className="row my-4">
+					<div className="col-12 col-md-6">
+						{/* Buscador */}
+						<form onSubmit={searchProduct} method="GET">
+							<div className="form-group">
+								<label htmlFor="">Buscar producto (escriba "todo" para ver todos los productos):</label>
+								<input type="text" name='product' className="form-control" />
+							</div>
+							<button className="btn btn-danger">Buscar</button>
+						</form>
 					</div>
-					<div className="row">
-						<div className="col-12">
-							<h2>Productos para la palabra: {keyword}</h2>
-						</div>
-						{
-							products.length >= 0 && products.map((product, i) => {
+				</div>
+				<div className="row">
+					<div className="col-12">
+						<h2>Productos para la palabra: {keyword}</h2>
+					</div>
+					{
+						products.length >= 0 && products.map((product, i) => {
 
-								// productImage = 'C:/Users/Guido/Desktop/ProyectoIntegrador/public' + product.img;
+							// productImage = 'C:/Users/Guido/Desktop/ProyectoIntegrador/public' + product.img;
 
 								
 								return (
@@ -102,30 +102,32 @@ function Search(){
 												</div>
 												<p>Categoría: {product.categoryName}</p>
 											</div>
+											<p>Categoría: {product.categoryName}</p>
 										</div>
 									</div>
-								)
-							})
 						}
-					</div>
+							)
+				</div>
+				</div>
+				
 
-	 {/* agregado botón */}
-					<div className="botones">
-					{ page > 1 &&
+				{/* agregado botón */}
+				<div className="botones">
+					{page > 1 &&
 						<form onSubmit={fewerProducts} method="GET">
-							<button className="btn btn-info" type="submit">Anterior</button>
-						</form> }
-					
-					{ productCount === 10 &&
-						<form onSubmit={moreProducts} method="GET">
-							<button className="btn btn-info" type="submit">Siguiente</button>
+							<button className="btn btn-danger" type="submit">Anterior</button>
 						</form>}
-					</div>
-	 {/* fin agregado botón */}
-					
-					{ productCount === 0 && <div className="alert alert-warning text-center">No se encontraron productos</div>}
 
-				</>
+					{productCount === 10 &&
+						<form onSubmit={moreProducts} method="GET">
+							<button className="btn btn-danger" type="submit">Siguiente</button>
+						</form>}
+				</div>
+				{/* fin agregado botón */}
+
+				{productCount === 0 && <div className="alert alert-warning text-center">No se encontraron productos</div>}
+
+			</>
 		</div>
 	)
 }
