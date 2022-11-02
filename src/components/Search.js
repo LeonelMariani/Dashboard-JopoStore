@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Search(){
@@ -83,7 +84,9 @@ function Search(){
 									<div className="col-sm-6 col-md-3 my-4" key={i}>
 										<div className="card shadow mb-4">
 											<div className="card-header py-3">
+											<Link to={`detalleDeProducto/${product.id}`}>
 												<h5 className="m-0 font-weight-bold text-gray-800">{product.name}</h5>
+											</Link>
 											</div>
 											<div className="card-body">
 												<div className="text-center">
