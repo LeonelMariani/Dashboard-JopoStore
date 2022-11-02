@@ -64,7 +64,7 @@ function Search(){
 									<label htmlFor="">Buscar producto (escriba "todo" para ver todos los productos):</label>
 									<input type="text" name='product' className="form-control" />
 								</div>
-								<button className="btn btn-info">Buscar</button>
+								<button className="btn btn-danger">Buscar</button>
 							</form>
 						</div>
 					</div>
@@ -114,7 +114,7 @@ function Search(){
 					
 					{ productCount === 10 &&
 						<form onSubmit={moreProducts} method="GET">
-							<button className="btn btn-info" type="submit">Siguiente</button>
+							<button className="btn btn-danger" type="submit">Siguiente</button>
 						</form>}
 					</div>
 	 {/* fin agregado botón */}
