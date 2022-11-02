@@ -14,7 +14,6 @@ function ProductDetail(props) {
 
     const product= products.find(oneProduct=> oneProduct.id===id)
     
-    
 
     return (
        
