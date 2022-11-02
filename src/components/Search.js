@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 function Search(){
 
+
 	const [products, setProducts] = useState([]);
 	const [keyword, setKeyword] = useState('');
 	const [page, setPage] = useState(1);
@@ -38,16 +39,16 @@ function Search(){
 
 	useEffect( () => {
 
-		if ( keyword.length > 0 && keyword.toLowerCase() != 'todo' ) {
-			fetchProducts (`url${page}&search=${keyword}`)
+		if ( keyword.length > 0 && keyword.toLowerCase() !== 'todo' ) {
+			fetchProducts (`${url}${page}&search=${keyword}`)
 		} else {
-			fetchProducts (`url${page}`)
+			fetchProducts (`${url}${page}`)
 		}
 	}, [keyword, page])
 
 	
 	useEffect( () => {
-		fetchProducts (`url${page}`)
+		fetchProducts (`${url}${page}`)
 	}, [] )
 
 

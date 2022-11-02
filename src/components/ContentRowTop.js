@@ -11,7 +11,7 @@ import { Route, Switch } from "react-router-dom";
 
 
 function ContentRowTop ( props ) {
-console.log (props.nombre);
+
 	return(
 		<React.Fragment>	
 				<div className="container-fluid">
