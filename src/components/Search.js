@@ -88,7 +88,7 @@ function Search(props) {
 										</div>
 										<div className="card-body">
 											<div className="text-center">
-											<Link to={`detalleDeProducto/${props.id}`}>
+											<Link to={`detalleDeProducto/${product.id}`}>
 												<img
 													className="img-fluid px-3 px-sm-4 mt-3 mb-4"
 
