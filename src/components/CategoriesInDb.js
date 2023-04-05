@@ -7,12 +7,15 @@ function CategoriesInDb() {
 
 
   useEffect(()=>{
-    fetch('http://localhost:3040/api/products/categories')
+    // fetch('http://localhost:3040/api/products/categories')
+    fetch('https://tienda-jopo-mb.onrender.com/api/products/categories')
+
     .then(response=>response.json())
     .then(category=>{
       setCategories(category.data.categories)})
 
-      fetch('http://localhost:3040/api/products')
+      // fetch('http://localhost:3040/api/products')
+      fetch('https://tienda-jopo-mb.onrender.com/api/products')
       .then(response=>response.json())
       .then(products=>{
         setCountProducts(products.data.countByCategory)})

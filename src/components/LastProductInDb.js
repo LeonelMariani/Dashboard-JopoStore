@@ -7,7 +7,8 @@ function LastProductInDb() {
     const [lastProduct, setLastProduct] = useState('');
 
     useEffect(() => {
-        fetch("http://localhost:3040/api/products/")
+        // fetch("http://localhost:3040/api/products/")
+        fetch("https://tienda-jopo-mb.onrender.com/api/products/")
             .then(response => response.json())
             .then(data => {
                 // setProducts (data.data.products);

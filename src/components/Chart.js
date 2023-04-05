@@ -6,7 +6,8 @@ function Chart (){
     const [products, setProducts]=useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:3040/api/products')
+        // fetch('http://localhost:3040/api/products')
+        fetch('https://tienda-jopo-mb.onrender.com/api/products')
         .then(response=>response.json())
         .then(products=>setProducts(products.data.products))
     },[])

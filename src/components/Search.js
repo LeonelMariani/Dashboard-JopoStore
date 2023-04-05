@@ -10,7 +10,8 @@ function Search() {
 	const [page, setPage] = useState(1);
 	const [productCount, setProductCount] = useState(0);
 
-	const url = 'http://localhost:3040/api/products/?page=';
+	// const url = 'http://localhost:3040/api/products/?page=';
+	const url = 'https://tienda-jopo-mb.onrender.com/api/products/?page=';
 
 	const searchProduct = e => {
 		setPage(1);
@@ -30,7 +31,8 @@ function Search() {
 	}
 
 	const fetchProducts = (url => {
-		fetch('http://localhost:3040/api/products/?search=' + keyword + '&page=' + page)
+		// fetch('http://localhost:3040/api/products/?search=' + keyword + '&page=' + page)
+    fetch('https://tienda-jopo-mb.onrender.com/api/products/?search=' + keyword + '&page=' + page)
 			.then(response => response.json())
 			.then(data => {
 				setProducts(data.data.products);
